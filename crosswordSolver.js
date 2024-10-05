@@ -13,7 +13,40 @@ export const parsePuzzle = (puzzleString) => {
   return puzzleGrid;
 };
 
-/*
-const emptyPuzzle = `2001\n0..0\n1000\n0..0`;
-const grid = parsePuzzle(emptyPuzzle);
-*/
+export const findWordPositions = (puzzleGrid) => {
+  const wordPositions = [];
+
+  for (let row = 0; row < puzzleGrid.length; row++) {
+    for (let col = 0; col < puzzleGrid[row].length; col++) {
+      const char = puzzleGrid[row][col];
+
+      if (!isNaN(char) && char > 0) {
+        const wordCount = parseInt(char, 10);
+
+        // Check if words can be placed horizontally
+        if (col + wordCount <= puzzleGrid[row].length) {
+          wordPositions.push({
+            direction: 'horizontal',
+            row,
+            col,
+            length: wordCount,
+          });
+        }
+        // Check if words can be placed vertically
+        if (row + wordCount <= puzzleGrid.length) {
+          wordPositions.push({
+            direction: 'vertical',
+            row,
+            col,
+            length: wordCount,
+          });
+        }
+      }
+    }
+  }
+  return wordPositions;
+};
+
+const grid = parsePuzzle('');
+const wordSpots = findWordPositions(grid);
+console.log(wordSpots);
