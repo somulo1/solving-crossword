@@ -4,7 +4,7 @@
   "description": "A  function that is able to solve an empty crossword puzzle.",
   "main": "crosswordSolver.js",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest --coverage"
   },
   "repository": {
     "type": "git",
@@ -12,5 +12,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.2"
+  }
 }
