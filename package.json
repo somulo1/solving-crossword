@@ -1,0 +1,16 @@
+{
+  "name": "crossword",
+  "version": "1.0.0",
+  "description": "A  function that is able to solve an empty crossword puzzle.",
+  "main": "crosswordSolver.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://learn.zone01kisumu.ke/git/johnodhiambo0/crossword.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
