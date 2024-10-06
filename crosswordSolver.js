@@ -1,6 +1,6 @@
-export const crosswordSolver = (puzzle, words) => {
+const crosswordSolver = (puzzle, words) => {
   // Parse the puzzle into a 2D grid
-  const puzzleGrid = parsePuzzle(puzzleString);
+  const puzzleGrid = parsePuzzle(puzzle);
 
   // Find word positions based on numbers in the puzzle
   const wordPositions = findWordPositions(puzzleGrid);
@@ -17,7 +17,7 @@ export const crosswordSolver = (puzzle, words) => {
   }
 };
 
-export const parsePuzzle = (puzzle) => {
+const parsePuzzle = (puzzle) => {
   if (puzzle.length === 0) {
     return '';
   }
@@ -30,7 +30,7 @@ export const parsePuzzle = (puzzle) => {
   return puzzleGrid;
 };
 
-export const findWordPositions = (puzzleGrid) => {
+const findWordPositions = (puzzleGrid) => {
   const wordPositions = [];
 
   for (let row = 0; row < puzzleGrid.length; row++) {
@@ -69,15 +69,12 @@ const fillWordsInPuzzle = (puzzleGrid, wordPositions, words) => {
   words.sort((a, b) => a.length - b.length);
 
   for (let i = 0; i < wordPositions.length; i++) {
-    const direction = wordPositions[i];
-    const row = wordPositions[i];
-    const col = wordPositions[i];
-    const length = wordPositions[i];
+    const { direction, row, col, length } = wordPositions[i];
     const word = words.find((w) => w.length === length);
 
     if (!word) {
       console.log('Error');
-      return;
+      return null;
     }
 
     // Remove word from list to avoid reusing it
@@ -86,17 +83,24 @@ const fillWordsInPuzzle = (puzzleGrid, wordPositions, words) => {
     // Place word in the grid
     if (direction === 'horizontal') {
       for (let j = 0; j < length; j++) {
-        if (puzzleGrid[row][col + j] !== '.') {
+        if (puzzleGrid[row][col + j] === '.') {
           puzzleGrid[row][col + j] = word[j];
         }
       }
     } else if (direction === 'vertical') {
       for (let j = 0; j < length; j++) {
-        if (puzzleGrid[row + j][col] !== '.') {
+        if (puzzleGrid[row + j][col] === '.') {
           puzzleGrid[row + j][col] = word[j];
         }
       }
     }
   }
   return puzzleGrid;
+};
+
+module.exports = {
+  crosswordSolver,
+  parsePuzzle,
+  findWordPositions,
+  fillWordsInPuzzle,
 };
