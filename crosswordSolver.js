@@ -98,4 +98,30 @@ const width = grid[0].length;
       return;
   }
 
+  // Recursively solves the puzzle
+  function solve(index) {
+
+    // Exit function if all words have been placed
+      if (index === words.length) {
+          return true; 
+      }
+
+
+      // try placing each word on grid
+      const word = words[index];
+      for (const start of wordStarts) {
+          if (canPlace(word, start)) {
+              place(word, start);
+              
+              if (solve(index + 1)) {
+                  return true;
+              }
+              remove(word, start);
+          }
+      }
+
+      return false;
+  }
+
+  // Check if a word can be placed at the given start position
   
