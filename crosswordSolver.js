@@ -63,3 +63,40 @@ export const findWordPositions = (puzzleGrid) => {
   }
   return wordPositions;
 };
+
+const fillWordsInPuzzle = (puzzleGrid, wordPositions, words) => {
+  // Sort words by their length to match them with positions
+  words.sort((a, b) => a.length - b.length);
+
+  for (let i = 0; i < wordPositions.length; i++) {
+    const direction = wordPositions[i];
+    const row = wordPositions[i];
+    const col = wordPositions[i];
+    const length = wordPositions[i];
+    const word = words.find((w) => w.length === length);
+
+    if (!word) {
+      console.log('Error');
+      return;
+    }
+
+    // Remove word from list to avoid reusing it
+    words = words.filter((w) => w !== word);
+
+    // Place word in the grid
+    if (direction === 'horizontal') {
+      for (let j = 0; j < length; j++) {
+        if (puzzleGrid[row][col + j] !== '.') {
+          puzzleGrid[row][col + j] = word[j];
+        }
+      }
+    } else if (direction === 'vertical') {
+      for (let j = 0; j < length; j++) {
+        if (puzzleGrid[row + j][col] !== '.') {
+          puzzleGrid[row + j][col] = word[j];
+        }
+      }
+    }
+  }
+  return puzzleGrid;
+};
