@@ -124,4 +124,21 @@ const width = grid[0].length;
   }
 
   // Check if a word can be placed at the given start position
-  
+  function canPlace(word, start) {
+      let { row, col, direction } = start;
+      for (let i = 0; i < word.length; i++) {
+          if (row >= height || col >= width) return false;
+          if (grid[row][col] !== '0' && grid[row][col] !== '1' && grid[row][col] !== '2' && grid[row][col] !== word[i]) {
+              return false;
+          }
+
+          // Proceed to next cell depending on direction
+          if (direction === 'horizontal') {
+            col++
+          } else {
+            row++
+          }
+
+      }
+      return true;
+  }
