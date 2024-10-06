@@ -16,3 +16,16 @@ export const crosswordSolver = (puzzle, words) => {
     console.log(result);
   }
 };
+
+export const parsePuzzle = (puzzle) => {
+  if (puzzle.length === 0) {
+    return '';
+  }
+
+  // Split puzzle by \n to get each row
+  const rows = puzzle.split('\n');
+
+  // Convert each row to an array of characters
+  const puzzleGrid = rows.map((row) => row.split(''));
+  return puzzleGrid;
+};
