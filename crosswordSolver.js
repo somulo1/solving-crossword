@@ -47,4 +47,9 @@ if (foundInvalidWord) {
     console.log("Error");
     return;
 }
-}
+
+// Sort 'words' from longest to shortest
+words.sort((a, b) => b.length - a.length);
+const shortest = words[words.length-1].length;
+const wordStarts = [];
+let tag = 0; // To track the number of placed words
