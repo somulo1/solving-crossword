@@ -47,4 +47,4 @@ if (foundInvalidWord) {
     console.log("Error");
     return;
 }
-
+}
