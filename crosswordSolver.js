@@ -91,3 +91,11 @@ const width = grid[0].length;
           }
       }
   }
+
+  // Check if 'tag' matches number of words
+  if (tag !== words.length) {
+      console.log('Error');
+      return;
+  }
+
+  
