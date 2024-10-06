@@ -142,3 +142,43 @@ const width = grid[0].length;
       }
       return true;
   }
+
+  // Place the word at the start position
+  function place(word, start) {
+      let { row, col, direction } = start;
+      for (let i = 0; i < word.length; i++) {
+          grid[row][col] = word[i];
+          direction === 'horizontal' ? col++ : row++;
+      }
+  }
+
+  // Remove the word from the puzzle (used for backtracking)
+  function remove(word, start) {
+  
+      let { row, col, direction } = start;
+      for (let i = 0; i < word.length; i++) {
+          grid[row][col] = '0';
+
+            // Proceed to next cell depending on direction
+            if (direction === 'horizontal') {
+              col++
+            } else {
+              row++
+            }
+      }
+  }
+
+  // Attempt to solve the puzzle and output result
+  if (solve(0)) {
+      console.log(grid.map(row => row.join('')).join('\n'));
+  } else {
+      console.log('Error');
+  }
+};
+const emptyPuzzle = `2001
+0..0
+1000
+0..0`
+const words = ['casa', 'alan', 'ciao', 'anta']
+
+crosswordSolver(emptyPuzzle, words)
