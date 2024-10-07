@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A  function that is able to solve an empty crossword puzzle.",
   "main": "crosswordSolver.js",
+  "type": "module",
   "scripts": {
     "test": "vitest --coverage"
   },
