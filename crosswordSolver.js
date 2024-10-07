@@ -248,7 +248,7 @@ const solveGrid = (grid, slots, words) => {
         if (explore(slotIndex + 1)) return true;
 
         // If we didn't find a solution, remove the word from the current slot
-        removeWord(grid, currentSlot);
+        removeWordFromGrid(grid, currentSlot);
 
         // Remove the word from the set of used words
         usedWords.delete(word);
@@ -285,7 +285,7 @@ export const canPlaceWord = (grid, slot, word) => {
     // If the current cell value is not a "blank" cell (i.e. a '.')
     // and the current cell value does not match the value of the current
     // character in the word, then we can't place the word in this slot
-    if (currentCellValue !== '.' && currentCellValue !== wordValue) {
+    if (currentCellValue !== '.' && currentCellValue !== wordValue && !/^[012]$/.test(currentCellValue)) {
       return false;
     }
   }
