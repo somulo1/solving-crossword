@@ -1,15 +1,17 @@
 import { expect, test } from 'vitest';
 
-import { crosswordSolver } from './crosswordSolver.js';
-import { identifyWordSlots } from './crosswordSolver.js';
-import { findHorizontalSlot } from './crosswordSolver.js';
-import { findVerticalSlot } from './crosswordSolver.js';
-import { isValidPuzzle } from './crosswordSolver.js';
-import { isValidWordList } from './crosswordSolver.js';
-import { parsePuzzle } from './crosswordSolver.js';
-import { canPlaceWord } from './crosswordSolver.js';
-import { placeWord } from './crosswordSolver.js';
-import { removeWordFromGrid } from './crosswordSolver.js';
+import {
+  crosswordSolver,
+  identifyWordSlots,
+  findHorizontalSlot,
+  findVerticalSlot,
+  isValidPuzzle,
+  isValidWordList,
+  parsePuzzle,
+  canPlaceWord,
+  placeWord,
+  removeWordFromGrid,
+} from './crosswordSolver.js';
 
 test('should return "Error" when given an empty puzzle string', () => {
   const puzzle = '';
