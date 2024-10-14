@@ -22,7 +22,12 @@ export const crosswordSolver = (puzzleString, words) => {
   const solution = solveGrid(grid, slots, words);
 
   // If the puzzle is solved, convert the solution to a string and return it otherwise, return an error message
-  return solution ? solutionToString(solution) : 'Error';
+  if (solution) {
+    const solutionString = solutionToString(solution);
+    console.log(solutionString);
+  } else {
+    console.log('Error.');
+  }
 };
 
 export const identifyWordSlots = (grid) => {
@@ -242,8 +247,6 @@ export const removeWordFromGrid = (
   grid,
   { row, col, length, isHorizontal }
 ) => {
-  // This function takes a grid and a slot object, and removes the word from the grid.
-
   for (let i = 0; i < length; i++) {
     // Calculate the row and column indices of the current cell in the grid
     const currentRow = isHorizontal ? row : row + i;
